@@ -11,31 +11,31 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class Approval extends Entity {
+export class PunkBidEntered extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("owner", Value.fromBytes(Bytes.empty()));
-    this.set("spender", Value.fromBytes(Bytes.empty()));
+    this.set("index", Value.fromBigInt(BigInt.zero()));
     this.set("value", Value.fromBigInt(BigInt.zero()));
+    this.set("from", Value.fromBytes(Bytes.empty()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Approval entity without an ID");
+    assert(id != null, "Cannot save PunkBidEntered entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save Approval entity with non-string ID. " +
+        "Cannot save PunkBidEntered entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("Approval", id.toString(), this);
+      store.set("PunkBidEntered", id.toString(), this);
     }
   }
 
-  static load(id: string): Approval | null {
-    return changetype<Approval | null>(store.get("Approval", id));
+  static load(id: string): PunkBidEntered | null {
+    return changetype<PunkBidEntered | null>(store.get("PunkBidEntered", id));
   }
 
   get id(): string {
@@ -47,22 +47,13 @@ export class Approval extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get owner(): Bytes {
-    let value = this.get("owner");
-    return value!.toBytes();
+  get index(): BigInt {
+    let value = this.get("index");
+    return value!.toBigInt();
   }
 
-  set owner(value: Bytes) {
-    this.set("owner", Value.fromBytes(value));
-  }
-
-  get spender(): Bytes {
-    let value = this.get("spender");
-    return value!.toBytes();
-  }
-
-  set spender(value: Bytes) {
-    this.set("spender", Value.fromBytes(value));
+  set index(value: BigInt) {
+    this.set("index", Value.fromBigInt(value));
   }
 
   get value(): BigInt {
@@ -73,33 +64,43 @@ export class Approval extends Entity {
   set value(value: BigInt) {
     this.set("value", Value.fromBigInt(value));
   }
+
+  get from(): Bytes {
+    let value = this.get("from");
+    return value!.toBytes();
+  }
+
+  set from(value: Bytes) {
+    this.set("from", Value.fromBytes(value));
+  }
 }
 
-export class Transfer extends Entity {
+export class PunkBought extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
 
+    this.set("index", Value.fromBigInt(BigInt.zero()));
+    this.set("value", Value.fromBigInt(BigInt.zero()));
     this.set("from", Value.fromBytes(Bytes.empty()));
     this.set("to", Value.fromBytes(Bytes.empty()));
-    this.set("value", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Transfer entity without an ID");
+    assert(id != null, "Cannot save PunkBought entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save Transfer entity with non-string ID. " +
+        "Cannot save PunkBought entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("Transfer", id.toString(), this);
+      store.set("PunkBought", id.toString(), this);
     }
   }
 
-  static load(id: string): Transfer | null {
-    return changetype<Transfer | null>(store.get("Transfer", id));
+  static load(id: string): PunkBought | null {
+    return changetype<PunkBought | null>(store.get("PunkBought", id));
   }
 
   get id(): string {
@@ -109,6 +110,24 @@ export class Transfer extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
+  }
+
+  get index(): BigInt {
+    let value = this.get("index");
+    return value!.toBigInt();
+  }
+
+  set index(value: BigInt) {
+    this.set("index", Value.fromBigInt(value));
+  }
+
+  get value(): BigInt {
+    let value = this.get("value");
+    return value!.toBigInt();
+  }
+
+  set value(value: BigInt) {
+    this.set("value", Value.fromBigInt(value));
   }
 
   get from(): Bytes {
@@ -127,14 +146,5 @@ export class Transfer extends Entity {
 
   set to(value: Bytes) {
     this.set("to", Value.fromBytes(value));
-  }
-
-  get value(): BigInt {
-    let value = this.get("value");
-    return value!.toBigInt();
-  }
-
-  set value(value: BigInt) {
-    this.set("value", Value.fromBigInt(value));
   }
 }

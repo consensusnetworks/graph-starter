@@ -1,25 +1,26 @@
 import {
-  Approval as ApprovalEvent,
-  Transfer as TransferEvent,
+  PunkBidEntered as PunkBidEnteredEvent,
+  PunkBought as PunkBoughtEvent,
 } from "../generated/Contract/Contract";
-import { Approval, Transfer } from "../generated/schema";
+import { PunkBidEntered, PunkBought } from "../generated/schema";
 
-export function handleApproval(event: ApprovalEvent): void {
-  let entity = new Approval(
+export function handlePunkBidEntered(event: PunkBidEnteredEvent): void {
+  let entity = new PunkBidEntered(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
-  entity.owner = event.params.owner;
-  entity.spender = event.params.spender;
+  entity.index = event.params.punkIndex;
   entity.value = event.params.value;
+  entity.from = event.params.fromAddress;
   entity.save();
 }
 
-export function handleTransfer(event: TransferEvent): void {
-  let entity = new Transfer(
+export function handlePunkBought(event: PunkBoughtEvent): void {
+  let entity = new PunkBought(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
-  entity.from = event.params.from;
-  entity.to = event.params.to;
+  entity.index = event.params.punkIndex;
   entity.value = event.params.value;
+  entity.from = event.params.fromAddress;
+  entity.to = event.params.toAddress;
   entity.save();
 }

@@ -1,13 +1,14 @@
-type Approval @entity {
+type PunkBidEntered @entity {
   id: ID!
-  owner: Bytes! # address
-  spender: Bytes! # address
-  value: BigInt! # uint256
+  index: BigInt!
+  value: BigInt!
+  from: Bytes!
 }
 
-type Transfer @entity {
+type PunkBought @entity {
   id: ID!
-  from: Bytes! # address
-  to: Bytes! # address
-  value: BigInt! # uint256
+  index: BigInt!
+  value: BigInt!
+  from: Bytes!
+  to: Bytes!
 }
