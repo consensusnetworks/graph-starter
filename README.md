@@ -8,13 +8,13 @@ Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
 ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-## Setup
+## Usage
 
 ### Prerequisites:
   - Graph CLI (`npm install -g @graphprotocol/graph-cli`)
   - Ethereum archive node HTTP API key (Get one [here](https://www.alchemy.com/))
 
-### Steps: 
+### Setup: 
    
 1. Open a terminal and run the following to start an Ethereum mainnet fork node:
     ```shell
@@ -49,22 +49,25 @@ Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
 
 ## Example Contract
 
-Try the contract at `https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB#code`. 
+Try it out with [the the contract for CryptoPunk #7523](https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB#code). 
 
 ![Cryptopunk #7523](assets/cryptopunk.png)
 
-*Pictured above: a cryptopunk that is worth $11.75 million. We can index a history of bid and buy events for this 'punk.*
+*Pictured above: A cryptopunk that is worth $11.75 million. We can index a history of bid and buy events for this 'punk.*
 
-1. Scroll down to the section titled `Contract ABI` and copy the ABI json. Paste this into [subgraph/abis/Contract.json](subgraph/abis/Contract.json), as mentioned in step 2 above.
+### Steps
+
+1. Scroll down to section titled `Contract ABI` and copy the ABI json. Paste this into [subgraph/abis/Contract.json](subgraph/abis/Contract.json), as mentioned in step 2 above.
    
 2. Copy the contract address from Etherscan. Paste this into `dataSources:source:address:` in [subgraph/subgraph.yaml](subgraph/subgraph.yaml), as mentioned in step 3 above.
    
 3. Run step 4 above to create and deploy the subgraph.
    
-4. Install the python dependencies for [client](client) as you prefer and run the following to test your subgraph endpoint:
+4. Change directory to [clients/python](clients/python) and install the python dependencies as you prefer and run the following to test your subgraph endpoint:
     ```shell
+    cd clients/python
     pip install -r requirements.txt
-    python main.py
+    python3 main.py
     ```
     You should see a history of transfers for the contract.
 

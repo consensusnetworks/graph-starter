@@ -21,16 +21,16 @@ async def main():
         # Execute single query
         # id ID!, from Bytes!, to Bytes!, value BigInt!
         query = gql(
-            """
+        """
             {
-                transfers {
+                punkBids {
                     id
-                    from
-                    to
+                    index
                     value
+                    from
                 }
             }
-            """
+        """
         )
 
         result = await session.execute(query)
