@@ -10,3 +10,6 @@ env
 # Hardhat files
 cache
 artifacts
+
+# Graph node files
+data
