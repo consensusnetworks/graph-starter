@@ -7,7 +7,7 @@ dataSources:
     network: mainnet
     source:
       # Replace with your own smart contract address
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      address: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB"
       abi: Contract
     mapping:
       kind: ethereum/events
