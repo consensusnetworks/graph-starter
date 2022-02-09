@@ -69,7 +69,7 @@ We can deploy our example that looks at [the contract for CryptoPunk #7523](http
 4. Change directory to [clients/python](clients/python) and install the python dependencies as you prefer and run the following to test your subgraph endpoint:
     ```shell
     cd clients/python
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
     python3 main.py
     ```
     You should see the terminal print a history of bids and buys for the contract, like this:
