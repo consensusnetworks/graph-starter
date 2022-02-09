@@ -7,6 +7,7 @@ Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
 ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)
 ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
 ## Prerequisites
 
@@ -15,7 +16,7 @@ You'll need a few things:
 - Ethereum archive node HTTP API key (from [Alchemy](https://www.alchemy.com/))
 - Docker, Python and Node
 
-## Setup:
+## Setup
 
 The setup task is to start a local Ethereum node as a fork of the existing mainnet to have easy access to rich public on-chain data, and to start a local Graph node to deploy and test a GraphQL API.
 
@@ -38,7 +39,7 @@ The setup task is to start a local Ethereum node as a fork of the existing mainn
     You'll also want to leave this node running for the rest of the process. **Note:** Whenever the Ethereum network has been reset (eg. Hardhat restarted, computer rebooted…), you must DELETE the ./docker/data folder located in the node folder cloned from the repository).
     This is required to clean the existing database that checks the genesis block for the current Ethereum network. You can do this cleanup by running `rm -rf "graph/node/docker/data"`. You can stop the node anytime by running `CTRL+C` in the terminal that you started it in.
 
-## Usage:
+## Usage
 
 You'll need a contract ABI json and address to get started with a new subgraph. To start, you can use the example values provided.
 
@@ -116,6 +117,10 @@ Todo. How to index events how you want them with an AssemblyScript mapping.
 ## What Next?
 
 Find interesting data and use it!
+
+## Contributing
+
+Pull requests targeting the `master` branch are welcome anytime. For major changes, please check out what's already being worked on [here](https://github.com/consensusnetworks/graph-starter/issues) and open a new issue before starting!
 
 ## License
 

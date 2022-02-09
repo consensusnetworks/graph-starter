@@ -11,8 +11,8 @@
     "url": "git+https://github.com/consensusnetworks/graph-starter.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Consensus Networks",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/consensusnetworks/graph-starter/issues"
   },
