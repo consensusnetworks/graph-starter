@@ -1,8 +1,8 @@
 # Graph Starter
 
-Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
-
-![The Graph image](assets/graph.webp)
+| ![The Graph image](assets/graph.webp) | 
+|:--:| 
+| *Index on-chain events and data and deploy public GraphQL APIs with the [Graph](https://thegraph.com/).* |
 
 ![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)
 ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
@@ -12,7 +12,10 @@ Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
 ## Prerequisites
 
 You'll need a few things:
-- Graph CLI (`npm install -g @graphprotocol/graph-cli`)
+- Graph CLI 
+    ```shell
+    npm install -g @graphprotocol/graph-cli
+    ```
 - Ethereum archive node HTTP Endpoint from [Alchemy](https://www.alchemy.com/) (should look like `https://eth-mainnet.alchemyapi.io/v2/"your-api-key"`)
 - Docker, Python and Node
 
@@ -48,9 +51,9 @@ You'll need a contract ABI json and address to get started with a new subgraph. 
 
 We can deploy our example that looks at [the contract for CryptoPunk #7523](https://etherscan.io/address/0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB#code). 
 
-![Cryptopunk #7523](assets/cryptopunk.png)
-
-*Pictured above: A cryptopunk that is worth $11.75 million. We can index a history of bid and buy events for this 'punk.*
+| ![Cryptopunk #7523](assets/cryptopunk.png) | 
+|:--:| 
+| *Cryptopunk #7523 is worth $11.75 million. We can index a history of bid and buy events for this 'punk.* |
 
 1. Take a look at [subgraph/schema.graphql](subgraph/schema.graphql), [subgraph/src/mapping.ts](subgraph/src/mapping.ts) and [subgraph/subgraph.yaml](subgraph/subgraph.yaml) to our entity schema, our event handlers, and our data sources, respectively. You can also check out [clients/python/main.py](clients/python/main.py) to see the desired GraphQL API.  
 
