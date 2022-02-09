@@ -79,7 +79,7 @@ We can deploy our example that looks at [the contract for CryptoPunk #7523](http
     pip3 install -r requirements.txt
     python3 main.py
     ```
-    You should see the terminal print a history of bids and buys for the contract, like this:
+    You should see the terminal print a history of bids and buys for the contract.
 
 
 ### Development
@@ -95,9 +95,17 @@ Now you can retrieve your own contract of choice and create a subgraph for it.
     The commands are repasted below for your convenience:
     ```shell
     cd subgraph
+    
+    # Generate new types
     npm run codegen
+    
+    # Build the mappings
     npm run build
+    
+    # Create the subgraph locally
     npm run create-local
+    
+    # Deploy the subgraph locally
     npm run deploy-local
     ```
 
