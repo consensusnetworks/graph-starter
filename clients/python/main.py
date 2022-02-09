@@ -27,18 +27,17 @@ async def main():
                     from
                 }
             }
-
-            {
-                punkBuys(subgraphError: allow) {
-                    id
-                    index
-                    value
-                    from
-                    to
-                }
-            }
-        
         """)
+            # Alternatively, you could use the following query string:
+            # {
+            #     punkBuys(subgraphError: allow) {
+            #         id
+            #         index
+            #         value
+            #         from
+            #         to
+            #     }
+            # }
 
         result = await session.execute(query)
         print(result)
