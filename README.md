@@ -13,7 +13,7 @@ Deploy a decentralized GraphQL API with the [Graph](https://thegraph.com/).
 
 You'll need a few things:
 - Graph CLI (`npm install -g @graphprotocol/graph-cli`)
-- Ethereum archive node HTTP API key (from [Alchemy](https://www.alchemy.com/))
+- Ethereum archive node HTTP Endpoint from [Alchemy](https://www.alchemy.com/) (should look like `https://eth-mainnet.alchemyapi.io/v2/"your-api-key"`)
 - Docker, Python and Node
 
 ## Setup
@@ -24,10 +24,11 @@ The setup task is to start a local Ethereum node as a fork of the existing mainn
    ```shell
     npm install
     ```
+
    
-2. Now run the following to start an Ethereum mainnet fork node:
+2. Now run the following to start an Ethereum mainnet fork node with your Ethereum endpoint:
     ```shell
-    npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/<your-key>
+    npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/"your-api-key"
     ```
     You'll want to leave this node running for the rest of the process.
 
@@ -63,10 +64,16 @@ We can deploy our example that looks at [the contract for CryptoPunk #7523](http
     ```
     The last command should output both an HTTP and a WS endpoint for your subgraph. **Save your HTTP endpoint as `GRAPH_ENDPOINT`  in your `.env` file for testing queries.** For this setup, the default should be `http://127.0.0.1:8000/subgraphs/name/consensusnetworks/graph-starter`.
 
-3. Test your endpoint at the local url provided by the terminal for your GraphQL server. You should be able to run the expected queries in the GraphiQL sandbox. 
+3. Create a `.env` file in the root of your project and add the following:
+    ```shell
+    GRAPH_ENDPOINT="your-graph-endpoint"
+    ETHEREUM_ENDPOINT="your-ethereum-endpoint"
+    ```
+
+4. Test your endpoint at the local url provided by the terminal for your GraphQL server. You should be able to run the expected queries in the GraphiQL sandbox. 
     **Note:** If you are using a contract that has a very long history on-chain, you may need to wait a few minutes for the data to be indexed... or hours (if you're on a slow internet connection). *Don't fear, once things are indexed you will find speed is very fast.*
 
-4. Change directory to [clients/python](clients/python) and install the python dependencies as you prefer and run the following to test your subgraph endpoint:
+5. Change directory to [clients/python](clients/python) and install the python dependencies as you prefer and run the following to test your subgraph endpoint:
     ```shell
     cd clients/python
     pip3 install -r requirements.txt
