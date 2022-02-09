@@ -11,7 +11,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class PunkBidEntered extends Entity {
+export class PunkBid extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -23,19 +23,19 @@ export class PunkBidEntered extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save PunkBidEntered entity without an ID");
+    assert(id != null, "Cannot save PunkBid entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save PunkBidEntered entity with non-string ID. " +
+        "Cannot save PunkBid entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("PunkBidEntered", id.toString(), this);
+      store.set("PunkBid", id.toString(), this);
     }
   }
 
-  static load(id: string): PunkBidEntered | null {
-    return changetype<PunkBidEntered | null>(store.get("PunkBidEntered", id));
+  static load(id: string): PunkBid | null {
+    return changetype<PunkBid | null>(store.get("PunkBid", id));
   }
 
   get id(): string {
@@ -75,7 +75,7 @@ export class PunkBidEntered extends Entity {
   }
 }
 
-export class PunkBought extends Entity {
+export class PunkBuy extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -88,19 +88,19 @@ export class PunkBought extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save PunkBought entity without an ID");
+    assert(id != null, "Cannot save PunkBuy entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save PunkBought entity with non-string ID. " +
+        "Cannot save PunkBuy entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("PunkBought", id.toString(), this);
+      store.set("PunkBuy", id.toString(), this);
     }
   }
 
-  static load(id: string): PunkBought | null {
-    return changetype<PunkBought | null>(store.get("PunkBought", id));
+  static load(id: string): PunkBuy | null {
+    return changetype<PunkBuy | null>(store.get("PunkBuy", id));
   }
 
   get id(): string {

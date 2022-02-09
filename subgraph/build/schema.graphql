@@ -1,11 +1,11 @@
-type PunkBidEntered @entity {
+type PunkBid @entity {
   id: ID!
   index: BigInt!
   value: BigInt!
   from: Bytes!
 }
 
-type PunkBought @entity {
+type PunkBuy @entity {
   id: ID!
   index: BigInt!
   value: BigInt!

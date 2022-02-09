@@ -12,26 +12,33 @@ async def main():
 
     transport = AIOHTTPTransport(url=endpoint)
 
-    # Using `async with` on the client will start a connection on the transport
-    # and provide a `session` variable to execute queries on this connection
     async with Client(
         transport=transport, fetch_schema_from_transport=True,
     ) as session:
 
         # Execute single query
-        # id ID!, from Bytes!, to Bytes!, value BigInt!
-        query = gql(
-        """
+        # id ID!, index BigInt!, value BigInt!, from Bytes!, to Bytes! 
+        query = gql("""
             {
-                punkBids {
+                punkBids(subgraphError: allow) {
                     id
                     index
                     value
                     from
                 }
             }
-        """
-        )
+
+            {
+                punkBuys(subgraphError: allow) {
+                    id
+                    index
+                    value
+                    from
+                    to
+                }
+            }
+        
+        """)
 
         result = await session.execute(query)
         print(result)
